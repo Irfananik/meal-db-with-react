@@ -10,11 +10,16 @@ const Food = () => {
         .then(response => response.json())
         .then(data => setMeals(data.meals))
     },[])
+
+    const addItems = (meals) => {
+        console.log(meals)
+    }
+
     return (
         <div className="meal-container">
             <div className="meal">
                 {
-                    meals.map(meal => <SingleMeal key={meal.idMeal} meal={meal.strMeal} image = {meal.strMealThumb} category={meal.strCategory} instructions = {meal.strInstructions}></SingleMeal>)
+                    meals.map(meal => <SingleMeal key={meal.idMeal} meal={meal.strMeal} image = {meal.strMealThumb} category={meal.strCategory} instructions = {meal.strInstructions} addItems = {addItems}></SingleMeal>)
                 }
             </div>
             <div className="add-items">
