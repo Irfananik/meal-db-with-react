@@ -4,6 +4,7 @@ import './Food.css'
 
 const Food = () => {
     const [meals,setMeals] = useState([])
+    const [cart,setCart] = useState([])
 
     useEffect(() => {
         fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=a')
@@ -13,6 +14,8 @@ const Food = () => {
 
     const addItems = (meals) => {
         console.log(meals)
+        const newCart = [...cart,meals]
+        setCart(newCart)
     }
 
     return (
@@ -23,7 +26,8 @@ const Food = () => {
                 }
             </div>
             <div className="add-items">
-                <h2>this is add items section</h2>
+                <h2>Add Items List</h2>
+                <p>Item: {cart.length}</p>
             </div>
         </div>
     );
